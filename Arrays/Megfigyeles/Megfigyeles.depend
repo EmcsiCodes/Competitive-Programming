@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1670599413 source:d:\emcsis things\work\school\nemes tihamer\megfigyeles\main.cpp
+	<iostream>
+	<vector>
+	<set>
+
