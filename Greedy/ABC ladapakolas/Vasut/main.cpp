@@ -14,15 +14,15 @@ int main()
         v.push_back(x);
     }
     vector<int> res;
-    res.push_back(1);
-    int endPoint = n-1;
+    res.push_back(0);
+    int endPoint = v[n-1];
     for(int i=1; i<v.size(); i++){
             cout<<v[res.back()]<<"+"<<k<<" "<<v[i]<<endl;
-        if(v[res.back()-1]+k<=v[i] && v[i]+k<=v[endPoint]) res.push_back(i+1);
+        if(v[res.back()]+k<=v[i] && v[i]+k<=endPoint) res.push_back(i);
     }
-    res.push_back(endPoint);
+    res.push_back(n-1);
     cout<<res.size()<<'\n';
-    for(auto i:res) cout<<i<<" ";
+    for(auto i:res) cout<<i+1<<" ";
     return 0;
 
 }
