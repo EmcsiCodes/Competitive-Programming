@@ -1,0 +1,3 @@
+﻿  sipalyak.cpp
+D:\sipalyak\sipalyak.cpp(27,14): warning C4018: '<': signed/unsigned mismatch
+  sipalyak.vcxproj -> D:\sipalyak\x64\Debug\sipalyak.exe
