@@ -3,8 +3,32 @@
 #include <map>
 using namespace std;
 
-/// @brief 
-/// @return 
+/*
+The problem, titled "Kézbesítők," involves scheduling meetings between a postmaster and a group of mail carriers. Each mail carrier has specific work intervals, and the objective is to find the shortest time interval during which the postmaster can meet with each mail carrier individually.
+
+Here's a more detailed explanation of the problem:
+
+Input:
+
+The first line of the input specifies the number of mail carriers, denoted as K (1 ≤ K ≤ 500).
+Following this, there are K blocks of input, each describing a mail carrier's work intervals.
+Each block starts with an integer Ni (1 ≤ Ni ≤ 1000), representing the number of work intervals for the current mail carrier.
+The subsequent Ni lines in the block describe the start and end days of each work interval for that mail carrier. These intervals are in increasing order of days.
+Objective:
+
+The postmaster wants to award a reward to each mail carrier, and these rewards require a personal meeting.
+The goal is to determine the shortest continuous time interval during which the postmaster can meet each mail carrier individually.
+Output:
+
+The program should output the start and end days of the shortest continuous interval in which the postmaster can meet all mail carriers.
+Example:
+
+For example, if there are three mail carriers and their work intervals are given, the program needs to find the shortest interval during which the postmaster can meet all three.
+Constraints:
+
+The time limit for the program is 0.2 seconds.
+The memory limit for the program is 32 MB.
+*/
 int main()
 {
     int k;
@@ -63,3 +87,26 @@ int main()
     cout<<best.first<<" "<<best.second;
     return 0;
 }
+/*
+Problem Overview:
+The problem involves finding the shortest continuous time interval during which a postmaster can meet with a group of mail carriers individually. Each mail carrier has specific work intervals, and the task is to determine the shortest continuous time when the postmaster can meet each carrier.
+
+Approach:
+The program uses a map to keep track of start and end days for each carrier's work intervals. It then iterates through these intervals to find the shortest continuous time interval during which the postmaster can meet all mail carriers.
+
+Input Reading:
+The program starts by reading the number of mail carriers, denoted as k. Following this, it reads the work intervals for each mail carrier and stores them in a vector.
+
+Processing Work Intervals:
+For each mail carrier, the program processes their work intervals. If a carrier has more than one work interval, the start and end days of these intervals are stored in a map.
+
+Finding the Shortest Interval:
+The program iterates through the intervals and finds the shortest continuous time interval during which the postmaster can meet all mail carriers.
+
+Output:
+The program outputs the start and end days of the shortest continuous interval.
+
+Detailed Explanation:
+The program uses maps startDay and endDay to store the start and end days of each carrier's work intervals.
+It iterates through the intervals to find the shortest continuous time interval
+*/
