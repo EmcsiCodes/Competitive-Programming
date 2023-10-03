@@ -2,7 +2,11 @@
 #include <vector>
 
 using namespace std;
-
+/*
+The problem involves finding routes in a network that can be traversed at least twice without following the same path.
+This is determined by identifying "bridges" in the network.
+A bridge is an edge whose removal increases the number of connected components in the graph.
+*/
 vector<int> adj[100001];
 
 void findBridges(int node,int &time,vector<int> &disc,
@@ -60,26 +64,29 @@ int main()
     for(auto i:res) cout<<i<<" ";
     return 0;
 }
-/*
-5 5 1
-1 2
-1 3
-2 3
-1 4
-4 5
-*/
-/*
-11 12 3
-3 2
-2 4
-4 3
-1 3
-2 6
-6 10
-6 11
-2 11
-5 7
-5 8
-5 4
-7 8
-*/
+/*Problem Overview:
+The problem involves finding routes in a network that can be traversed at least twice without following the same path. This is determined by identifying "bridges" in the network. A bridge is an edge whose removal increases the number of connected components in the graph.
+
+Approach Overview:
+The approach is based on finding bridges in the given graph, where a bridge is an edge that if removed, increases the number of connected components in the graph. After identifying the bridges, we perform a depth-first search (DFS) to find the valid routes.
+
+Detailed Explanation:
+Input Parsing:
+Parse the input, including the number of nodes (n), the number of edges (m), and the starting node (startNode).
+Build the Graph:
+Create an adjacency list representation of the graph based on the provided edges.
+Finding Bridges:
+Use a modified Depth-First Search (DFS) to identify bridges in the graph. The algorithm finds bridges by calculating the disc and low values for each node.
+disc (discovery time): The time at which a node was discovered during DFS.
+low: The earliest visited node (the oldest) that can be reached from the subtree rooted with the current node. This is based on back edges in the DFS tree.
+Whenever a back edge is found, update the low value of the current node. If a bridge is found, mark the second point of the bridge as invalid.
+DFS to find Valid Routes:
+Perform DFS traversal starting from the given startNode, visiting only valid nodes (nodes not marked as part of a bridge).
+Output the Result:
+Output the size of the valid routes and the nodes in the valid routes.
+Time Complexity Analysis:
+The time complexity of finding bridges in the graph is O(N + M), where N is the number of nodes and M is the number of edges.
+The DFS traversal to find valid routes also has a time complexity of O(N + M).
+Overall, the time complexity of the solution is O(N + M), which is efficient for the given input constraints.
+Overall Approach:
+The program efficiently identifies bridges in the graph and then performs a DFS traversal to find valid routes that can be traversed at least twice without following the same path. It outputs the size of the valid routes and the nodes in the valid routes.*/

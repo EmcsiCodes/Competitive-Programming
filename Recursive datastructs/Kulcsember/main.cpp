@@ -1,41 +1,27 @@
 #include <iostream>
-#include <queue>
 #include <vector>
-using namespace std;
 
+using namespace std;
+int n;
 vector<int> adj[100001];
 
-pair<int,int> BFS(int start,int n){
-    vector<bool> visited(n+1,0);
-    vector<int> dis(n+1,0);
-    queue<int> q;
-    q.push(start);
-    visited[start] = true;
-    while(!q.empty()){
-        int node = q.front();
-        q.pop();
-        for(auto i:adj[node]){
-            if(!visited[i]){
-                visited[i] = true;
-                q.push(i);
-                dis[i] = dis[node] + 1;
-            }
+int DFS(int node,vector<bool> &visited,vector<int>&res){
+    visited[node] = true;
+    int curr = 1;
+    for(auto i:adj[node]){
+        if(!visited[i]){
+            int num = DFS(i,visited,res);
+            res[node] = max(res[node], num);
+            curr += num;
         }
     }
-    int maxDis = 0;
-    int maxDisI = 0;
-    for(int i=1; i<=n; i++){
-        if(maxDis < dis[i]){
-            maxDis = dis[i];
-            maxDisI = i;
-        }
-    }
-    return {maxDisI, maxDis};
+    res[node] = max(res[node], n - curr);
+    return curr;
 }
 
 int main()
 {
-    int n;
+    
     cin>>n;
     for(int i=1; i<n; i++){
         int x,y;
@@ -43,8 +29,17 @@ int main()
         adj[x].push_back(y);
         adj[y].push_back(x);
     }
-    pair<int,int> res = BFS(BFS(1,n).first,n);
-    //meg parent visszajaras a mid megkeresesere
-    // -> min max csoport = res.second/2 + res.second%2
+    vector<int> res(n+1,0);
+    vector<bool> visited(n+1,false);
+    int a = DFS(1,visited,res);
+    int minSplit = n;
+    int minSplitI = 0;
+    for(int i=1; i<=n; i++){
+        if(minSplit > res[i]){
+            minSplit = res[i];
+            minSplitI = i;
+        }
+    }
+    cout<<minSplitI<<" "<<minSplit;
     return 0;
 }

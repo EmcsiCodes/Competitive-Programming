@@ -42,8 +42,7 @@ int main()
         adj[x].push_back(y);
         adj[y].push_back(x);
     }
-    vector<int> res, disc(n+1,-1), low(n+1,-1), parent(n+1,-1);
-    vector<bool> valid(n+1,true), visited(n+1,false);
+    vector<int> disc(n+1,-1), low(n+1,-1), parent(n+1,-1);
     for(int i=1; i<=n; i++){
         if(disc[i] == -1) findBridges(startNode,disc,low,parent);
     }

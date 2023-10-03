@@ -4,7 +4,45 @@
 #include <queue>
 #include <algorithm>
 using namespace std;
+/*
+Problem: Given a dictionary of words, the goal is to determine if a target word can be obtained from a given initial word using specific transformation rules. Two transformation rules are allowed:
+A. Swap a letter for another.
+B. Swap a letter for another or add a letter to the end of a word.
 
+Input:
+
+Number of words in the dictionary (N).
+N words in the dictionary.
+Transformation rule to be applied (A or B).
+Two words from the dictionary (P and Q).
+Output:
+
+Minimum number of rule applications needed to transform P into Q. If not possible, output -1.
+Total number of words that can be obtained from P using the transformation rules.
+Approach:
+
+Implement a depth-first search (DFS) or breadth-first search (BFS) based approach to traverse through the dictionary and generate words using the transformation rules until reaching the target word.
+Count the number of steps required to transform P to Q.
+Count the total number of words that can be obtained from P.
+Algorithm Steps:
+
+Read the input and prepare the dictionary.
+Implement DFS or BFS to generate words using the transformation rules until reaching Q.
+Count the number of steps needed to reach Q and the total number of words generated.
+Example:
+Input:
+OKOS
+ÁKOS
+ÁKOM
+OKOD
+ÁLOM
+ALOM
+HALOM
+Output:
+Minimum steps: 3 (OKOS -> ÁKOS -> ÁKOM -> ÁLOM)
+Total words: 6 (OKOS, ÁKOS, ÁKOM, OKOD, ÁLOM, HALOM)
+This problem involves transforming an initial word into a target word using specific rules and determining the number of words that can be generated following those rules. The task is to calculate the minimum number of steps required to reach the target word and count the total words that can be generated using the given transformation rules.
+*/
 vector<string> words[21];
 map<string, vector<string> > adj;
 map<string, bool> visited;
@@ -112,15 +150,31 @@ int main()
     return 0;
 }
 /*
-7
-OKOS
-ÁKOS
-ÁKOM
-OKOD
-ÁLOM
-ALOM
-HALOM
-A
-OKOS
-ÁLOM
+The goal is to:
+
+Determine the minimum number of rule applications needed to transform the initial word into the target word.
+Count the total number of words that can be generated from the initial word using these transformation rules.
+Approach:
+The code begins by parsing the input, which consists of:
+
+The number of words in the dictionary (N).
+N words in the dictionary.
+The transformation rule to be applied (A or B).
+Two words from the dictionary (P and Q).
+It organizes the words in the dictionary into different lengths (word length groups) to optimize later processing. Words of the same length are stored in separate groups.
+
+The code handles two cases based on the transformation rule:
+
+Rule A: Swap a letter for another. If rule A is selected, it ensures that both the start and end words have the same length. If not, it's not possible to transform, and it outputs -1.
+Rule B: Swap a letter for another or add a letter to the end of a word. It expands the word length groups to create new words by adding one character to each word until there are no more connections between words.
+For each pair of words within the same word length group, the code checks if they can be connected based on the transformation rules:
+
+Words are connected if they differ by only one character.
+The code constructs a graph of word connections, where words that can be transformed into each other are connected.
+
+It then uses a breadth-first search (BFS) algorithm to explore this graph starting from the initial word (P) to find the minimum number of steps needed to reach the target word (Q).
+
+After BFS traversal, the code checks if it was possible to reach the target word (Q). If not, it outputs -1.
+
+Finally, it counts the total number of words that can be obtained from the initial word (P) based on the transformation rules. The total number of words corresponds to the vertices visited during BFS traversal.
 */

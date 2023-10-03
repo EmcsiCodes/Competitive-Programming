@@ -3,7 +3,31 @@
 #include <unordered_map>
 #include <queue>
 using namespace std;
+/*
+The problem involves calculating the length of the longest possible path in a warehouse grid, where movement is only allowed on empty grid cells, and diagonal movement is not allowed.
 
+The input includes the number of columns (M) and rows (N) in the warehouse grid. Each of the following N lines contains M characters, either '#' (occupied) or '.' (empty), representing the warehouse grid.
+
+The program should output the length of the longest possible path in the warehouse grid.
+
+Example:
+Input:
+6 5
+..#.#.
+#.....
+..##.#
+.#....
+.#.#.#
+Output:
+12
+Explanation:
+The longest path possible in the given grid is from (1,1) to (6,5) and has a length of 12.
+
+Constraints:
+
+2 ≤ M, N ≤ 1000
+The input grid contains only characters '#' and '.'
+*/
 vector<int> adj[200001];
 
 pair<int,int> BFS(int node,int n){
@@ -86,10 +110,17 @@ int main()
     return 0;
 }
 /*
-6 5
-..#.#.
-#.....
-..##.#
-.#....
-.#.#.#
+This program aims to find the longest possible path in a warehouse grid where movement is allowed only on empty grid cells, and diagonal movement is not permitted.
+
+Approach:
+The program first reads the input, which includes the number of columns (M) and rows (N) in the warehouse grid, followed by the warehouse grid itself.
+It uses a graph representation to construct a graph where each empty cell is a node, and edges are established based on the empty cell's position.
+The program then employs Breadth-First Search (BFS) to find the longest possible path in the warehouse grid.
+It starts BFS from an arbitrary empty cell, calculates the maximum distance and the node corresponding to that maximum distance.
+Next, it runs BFS again from the node corresponding to the maximum distance, and this time it calculates and outputs the length of the longest possible path.
+Explanation:
+The program constructs a graph where each empty cell is a node, and edges are determined based on the grid layout.
+It uses BFS to find the longest possible path by starting from an empty cell, calculating the maximum distance and the node corresponding to that distance.
+It then runs BFS again from the node corresponding to the maximum distance to determine the actual longest path.
+This program successfully identifies the longest possible path in the warehouse grid by effectively utilizing BFS and constructing a graph representation of the grid. It provides the expected output for the given grid.
 */

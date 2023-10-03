@@ -3,7 +3,43 @@
 #include <queue>
 #include <stack>
 using namespace std;
+/*
+The problem is about finding the minimum number of transfers for Adam and Eve to meet at a given meeting point, given a train schedule.
 
+The input consists of the number of cities (N), the location of Eve (E) and Adam (A), the meeting point (R), and the number of train schedules (M). Each of the following M lines contains two integers, indicating the departure and arrival cities for a train.
+
+The program should output the minimum number of transfers for Eve and Adam, as well as the respective paths.
+
+Example:
+Input:
+10 2 3 7 12
+2 1
+1 6
+7 6
+6 8
+8 7
+7 9
+9 4
+5 7
+10 5
+3 5
+3 4
+4 5
+Output:
+5 3
+2 1 6 8 7
+3 5 7
+Explanation:
+Eve can take the route: 2 -> 1 -> 6 -> 8 -> 7 -> 3. Adam can take the route: 3 -> 5 -> 7.
+
+Constraints:
+
+1 ≤ N ≤ 20,000
+1 ≤ E ≠ A ≤ N
+1 ≤ R ≤ N
+1 ≤ M ≤ 200,000
+
+*/
 vector<int> adj[20001];
 
 vector<int> BFS(int node,int endNode,int n){
@@ -70,17 +106,16 @@ int main()
     return 0;
 }
 /*
-10 2 3 7 12
-2 1
-1 6
-7 6
-6 8
-8 7
-7 9
-9 4
-5 7
-10 5
-3 5
-3 4
-4 5
+This program addresses the problem of finding the minimum number of transfers required for Eve and Adam to meet at a given meeting point, given a train schedule.
+
+Approach:
+The program starts by reading the input, which includes the number of cities (N), the locations of Eve (E) and Adam (A), the meeting point (R), and the number of train schedules (M).
+It constructs a graph representation of the train schedules, where each city is a node, and the train schedules are edges between the cities.
+The program utilizes Breadth-First Search (BFS) to find the shortest path from Eve (E) to the meeting point (R) and from Adam (A) to the meeting point (R).
+It records the paths taken by both Eve and Adam during BFS.
+Finally, it outputs the minimum number of transfers required for both Eve and Adam to meet at the meeting point (R), as well as the respective paths taken by each.
+Explanation:
+The program constructs a graph representing the train schedules and uses BFS to find the shortest paths for both Eve and Adam to reach the meeting point.
+It then outputs the minimum number of transfers required and the paths taken by both Eve and Adam.
+This program successfully determines the minimum number of transfers required for Eve and Adam to meet at the specified meeting point and provides the corresponding paths for both.
 */

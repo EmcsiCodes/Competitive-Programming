@@ -20,7 +20,7 @@ void BFS(int startNode,int n,vector<bool> &visited){
         }
     }
 }
- //h tobb komponense van a grafnak, vegezze el a BFS-t minden kompra
+
 void BFSforAllComponents(int n){
     vector<bool> visited(n+1,false);
     for(int i=1; i<=n; i++){
@@ -33,7 +33,6 @@ void BFSforAllComponents(int n){
 
 int main()
 {
-    //barmilyen graf beolvasas
     int n,m;
     cin>>n>>m;
     for(int i=1; i<=m; i++){

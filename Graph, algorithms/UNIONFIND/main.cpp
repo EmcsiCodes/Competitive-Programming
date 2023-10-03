@@ -26,11 +26,9 @@ void Union(int a,int b){
     if(s[root1]<s[root2]){
         s[root2] += s[root1]; 
         parent[root1] = root2;
-        for(auto i:childs[root1]) parent[i] = root2;
     } else {
         s[root1] += s[root2];
         parent[root2] = root1;
-        for(auto i:childs[root2]) parent[i] = root1;
     }
 }
 

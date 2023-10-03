@@ -1,36 +1,30 @@
 #include <iostream>
 #include <vector>
+#include <set>
 using namespace std;
 
-void LIS(vector<int> v){
-    vector<int> lis(v.size(), 1);
-    for(int i=0; i<v.size(); i++) {
-        for(int j=0; j<i; j++){
-            if(v[i]>v[j] && lis[i]<lis[j]+1){
-                lis[i]=lis[j]+1;
+    int lengthOfLIS(vector<int>& nums) {
+        multiset< pair<int,int> > s;
+        s.insert({nums[0],1});
+        int res = 1;
+        for(int i=1; i<nums.size(); i++){
+            auto it = s.lower_bound({nums[i],0});
+            if(it == s.begin()) s.insert({nums[i],1});
+            else {
+                
+                int currMax = 1;
+                cout<<nums[i]<<"->";
+                for(auto p = s.begin(); p!=it; p++){
+                    currMax = max(currMax,p->second+1);
+                    cout<<currMax<<endl;
+                }
+                s.insert({nums[i],currMax});
+                res = max(res,currMax);
+                cout<<" max="<<res<<endl;
             }
         }
+        return res;
     }
-    int maxlength=0,index=0;
-    for(int i=lis.size()-1; i>=0; i--){
-        if(lis[i]>maxlength){
-            maxlength=lis[i];
-            index=i;
-        }
-    }
-    vector<int> sol;
-    cout<<"Longes increasing subsequence length: "<<maxlength<<endl;
-    for(int i=index; i>=0; i--){
-        if(lis[i]==maxlength) {
-            sol.insert(sol.begin(),v[i]);
-            maxlength--;
-        }
-    }
-    cout<<"The subsequence: ";
-    for(int i:sol){
-        cout<<i<<" ";
-    }
-}
 
 int main()
 {
@@ -42,6 +36,10 @@ int main()
         cin>>x;
         v.push_back(x);
     }
-    LIS(v);
+    cout<<lengthOfLIS(v);
     return 0;
 }
+/*
+8
+10 9 2 5 3 7 101 18
+*/

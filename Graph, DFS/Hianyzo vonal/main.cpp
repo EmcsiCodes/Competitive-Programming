@@ -2,7 +2,7 @@
 #include <vector>
 #include <stack>
 using namespace std;
-
+//Same problem as the "Erosen osszefuggove tetel"
 vector<int> adj[10001];
 stack<int> s;
 pair<int,int> res;

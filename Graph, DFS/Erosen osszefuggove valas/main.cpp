@@ -3,7 +3,7 @@
 #include <stack>
 
 using namespace std;
-
+//Make all the graph strongly connected with one new edge
 vector<int> adj[10001];
 stack<int> s;
 pair<int,int> res;
@@ -67,20 +67,30 @@ int main()
     return 0;
 }
 /*
-10 15
-2 3
-3 6
-6 2
-3 4
-4 2
-4 1
-1 5
-5 10
-10 1
-1 8
-5 7
-7 9
-9 7
-3 7
-8 10
+Input Reading:
+
+Read the number of nodes n and edges m.
+Initialize vectors to keep track of discovery time, low value, in-degree, out-degree, and whether a node is on the stack.
+Graph Construction and Degree Calculation:
+
+Read the edges from the input and construct the directed graph.
+Calculate the in-degree and out-degree of each node.
+Strongly Connected Component (SCC) Algorithm - Kosaraju's Algorithm:
+
+Iterate through all nodes.
+For each unvisited node:
+Call the SCC function to find strongly connected components.
+SCC Function (Kosaraju's Algorithm):
+
+Use Kosaraju's Algorithm to find strongly connected components.
+Traverse the graph in a depth-first search manner, assigning discovery times and low values to nodes.
+Keep track of nodes in the current SCC using a stack.
+When identifying a strongly connected component:
+Calculate in-degree and out-degree sums for the component.
+Update res.first if the in-degree sum is zero.
+Update res.second if the out-degree sum is zero.
+Output:
+
+Print the results, i.e., the nodes corresponding to the start and end points of the additional edge required to make the graph strongly connected.
+This algorithm employs Kosaraju's Algorithm to find strongly connected components in a directed graph and determine the nodes necessary to make the entire graph strongly connected by adding one new edge.
 */

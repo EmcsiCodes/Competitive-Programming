@@ -31,7 +31,6 @@ void DijkstraAlgo(int startNode,int n){
 
 int main()
 {
-    //EZ undirected graphra van. Ha directed, ugyan az csak maskepp taroljuk az ADJ[]-ben.
     int n, m;
     cin>>n>>m;
     for(int i=1; i<=m; i++){

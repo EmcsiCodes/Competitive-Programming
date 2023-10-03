@@ -2,7 +2,8 @@
 #include <vector>
 #include <queue>
 using namespace std;
-
+//Find the longest path in the graph, after that calculate the difference between
+//the points closer to the one end of the path, and the points 
 vector<int> adj[4001];
 int maxDis = 0;
 int maxDisIndex = 0;
