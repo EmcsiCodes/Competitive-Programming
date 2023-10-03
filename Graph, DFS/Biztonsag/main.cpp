@@ -1,7 +1,52 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+/*
+"Biztonság" (Security):
 
+- **Problem Description**:
+  The security service is preparing for a visit by a particularly protected guest. They know that the guest will visit a building at intersection A and another building at intersection B within the city. However, for security reasons, they only decide on the route at the last moment, making sure not to pass through any intersection more than once.
+
+- **Task**:
+  Create a program that, given the city's road network, determines all the intersections the guest can pass through when traveling from A to B.
+
+- **Input**:
+  - The first line of standard input contains the number of intersections N (1 ≤ N ≤ 100,000) and the number of streets M (1 ≤ M ≤ 500,000).
+  - The second line contains the intersection numbers A and B (1 ≤ A ≠ B ≤ N).
+  - The next M lines describe each street, with two integers representing the intersection numbers U and V, indicating a direct path from intersection U to intersection V without passing through any other intersection in both directions (1 ≤ U ≠ V ≤ N).
+
+- **Output**:
+  - The program should output the number of intersections through which the guest can pass when traveling from A to B.
+  - The second line should list the intersections, separated by spaces, in any order.
+
+- **Example**:
+  - **Input**:
+    ```
+    10 13
+    1 5
+    1 6
+    1 7
+    6 7
+    1 8
+    9 8
+    1 2
+    1 3
+    2 3
+    2 4
+    4 3
+    4 5
+    5 10
+    10 4
+    ```
+  - **Output**:
+    ```
+    4
+    3 4 10 2
+    ```
+
+- **Constraints**:
+  - The constraints ensure that the computation can be performed within a reasonable time frame.
+*/
 vector<int> adj[100001];
 
 // Depth-First Search (DFS) to mark nodes that can be reached from the endNode
