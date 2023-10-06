@@ -4,7 +4,49 @@
 #include <map>
 #include <set>
 using namespace std;
+/*
+Here's the summary of the problem "Hírek" (News):
 
+- **Problem Description**:
+  Students in a school pass on interesting news to others. The task is to determine which K students should be selected to maximize the number of students who receive the news when passed through.
+
+- **Task**:
+  Create a program that calculates the K students to select so that the news reaches the maximum number of students.
+
+- **Input**:
+  - The first line of standard input contains the number of students N (1 ≤ N ≤ 10,000) and the number of students to be selected K (1 ≤ K ≤ 2).
+  - The following N lines describe to whom each student passes the news. In the i-th line, the numbers of the students to whom the i-th student passes the news are listed, separated by spaces, and ending with 0.
+
+- **Output**:
+  - The first line of the output contains the number of students M who receive the news (including the selected students).
+  - The second line contains exactly K student numbers who are selected to pass on the news.
+
+- **Example**:
+  - **Input**:
+    ```
+    12 2
+    3 0
+    9 1 0
+    2 0
+    5 9 10 0
+    4 0
+    7 11 0
+    8 0
+    6 0
+    10 0
+    11 12 0
+    0
+    9 0
+    ```
+  - **Output**:
+    ```
+    10
+    2 7
+    ```
+
+- **Constraints**:
+  - The constraints ensure that the computation can be performed within a reasonable time frame.
+*/
 vector<int> nodes;
 set<int> subg[10001];
 vector<int> adj[10001];
@@ -129,17 +171,38 @@ int main()
     return 0;
 }
 /*
-12 2
-3 0
-9 1 0
-2 0
-5 9 10 0
-4 0
-7 11 0
-8 0
-6 0
-10 0
-11 12 0
-0
-9 0
+The provided C++ program addresses the "News" problem. Let's break down the approach for better understanding:
+
+### Approach:
+
+1. **Input Reading:**
+   - Read the number of students \(N\) and the number of students to be selected \(K\).
+   - Build an adjacency list to represent the passing of news from one student to another.
+
+2. **Strongly Connected Components (SCC):**
+   - Use Kosaraju's algorithm to find strongly connected components (SCCs) in the graph.
+   - Record the SCCs and the nodes belonging to each SCC.
+
+3. **Subgraph Creation:**
+   - Build a subgraph where each SCC is a node, and edges represent passing of news between SCCs.
+
+4. **Calculate News Passing Sum:**
+   - Traverse the subgraph and calculate the sum of students who would receive the news if starting from each SCC.
+
+5. **Select K Students:**
+   - If \(K = 1\):
+     - Select the SCC with the maximum news passing sum as the one student to pass the news.
+   - If \(K = 2\):
+     - Select two SCCs with the maximum and second maximum news passing sums, respectively, as the students to pass the news.
+
+6. **Output:**
+   - Print the number of students receiving the news and the selected students to pass the news.
+
+### Output:
+The program outputs the number of students who receive the news and the selected students to pass the news according to the specified rules.
+
+### Example:
+For the provided input example:
+- The program outputs "10" as the number of students receiving the news.
+- For \(K = 2\), it selects "2" and "7" as the students to pass the news.
 */

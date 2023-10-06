@@ -4,6 +4,43 @@
 #include <set>
 using namespace std;
 
+/*
+- **Problem Description**:
+  A computer network contains direct bidirectional data transfer connections between certain pairs of computers. The network allows communication between any two computers, possibly through other computers. However, there might be critical connections between two computers such that if they fail, any computer cannot reach any other.
+
+- **Task**:
+  Create a program that determines two computers between which,
+  when a direct connection is severed, the number of critical connections is minimized.
+
+- **Input**:
+  - The first line of standard input contains the number of computers N (2 ≤ N ≤ 10,000) and the number of connections M (1 ≤ M ≤ 100,000).
+  - The following M lines each contain two computer numbers A and B (1 ≤ A ≠ B ≤ N), representing a connection between computers A and B.
+
+- **Output**:
+  - The program should output one line containing the numbers of two computers, such that when a direct connection between them is severed, the number of critical connections is minimized.
+
+- **Example**:
+  - **Input**:
+    ```
+    8 8
+    1 2
+    1 3
+    2 4
+    2 5
+    6 3
+    7 3
+    8 5
+    4 5
+    ```
+  - **Output**:
+    ```
+    7 8
+    ```
+
+- **Constraints**:
+  - The constraints ensure that the computation can be performed within a reasonable time frame.
+*/
+
 vector<int> adj[10001];
 set< pair<int,int> > bridges;
 void makeThreeFromBridges(int node,vector<int>&disc,vector<int>&low,vector<int>&parent){
@@ -74,13 +111,25 @@ int main()
     return 0;
 }
 /*
-8 8
-1 2
-1 3
-2 4
-2 5
-6 3
-7 3
-8 5
-4 5
+Let's break down the approach of the program step by step.
+
+### Program Approach: Finding Critical Connections
+
+1. **Input Reading**:
+   - Read the number of computers (N) and the number of connections (M) from the standard input.
+   - Read M lines, each containing two computer numbers A and B, representing a connection between computers A and B.
+
+2. **Finding Bridges**:
+   - Use Tarjan's algorithm to find the bridges in the given network.
+   - The `makeThreeFromBridges` function identifies the bridges in the network using Tarjan's algorithm and stores them.
+
+3. **Breadth-First Search (BFS)**:
+   - Use BFS to determine the critical connections.
+   - The `BFS` function performs a BFS traversal and calculates the number of critical connections for each computer.
+
+4. **Output**:
+   - Print two computers, such that when a direct connection between them is severed, the number of critical connections is minimized.
+
+The approach involves using Tarjan's algorithm to find bridges and then performing BFS to determine the optimal computers for minimizing critical connections.
+
 */

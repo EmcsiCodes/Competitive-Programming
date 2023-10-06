@@ -4,7 +4,45 @@
 #include <unordered_map>
 #include <set>
 using namespace std;
+/*
+- **Problem Description**:
+  In a computer network, nodes are connected by directed one-way data transmission lines. The network is designed in such a way that data can be transferred from any node (possibly through other nodes) to any other node. This property of the network is called connectivity. Due to a malfunction, two nodes directly connected by a line are now faulty, causing the network to become disconnected.
 
+  The task is to find two nodes, between which a new line can be added, thus restoring connectivity in the network.
+
+- **Input**:
+  - The first line of standard input contains the number of nodes N (1 < N ≤ 4000) and the number of functioning lines M (1 < M ≤ 12,000).
+  - The following M lines each contain two integers u and v (1 ≤ u ≠ v ≤ N), representing a functioning line connecting node u to node v.
+
+- **Output**:
+  - The program should output a pair of node numbers (u, v) representing the two nodes between which a new directed line should be added to restore network connectivity.
+
+- **Example**:
+  - **Input**:
+    ```
+    9 12
+    5 6
+    6 5
+    2 1
+    1 3
+    3 2
+    1 4
+    4 2
+    3 7
+    7 8
+    8 9
+    9 7
+    6 2
+    ```
+  - **Output**:
+    ```
+    8 5
+    ```
+
+- **Constraints**:
+  - The computation should be completed within 0.1 seconds.
+  - The memory usage should not exceed 32 MiB.
+*/
 vector<int> nodes;
 unordered_map<int,int> comp;
 set<int> subg[4001];
@@ -79,17 +117,27 @@ int main()
     return 0;
 }
 /*
-9 12
-5 6
-6 5
-2 1
-1 3
-3 2
-1 4
-4 2
-3 7
-7 8
-8 9
-9 7
-6 2
+The provided program addresses the problem of finding two nodes between which a new directed line should be added to restore network connectivity. It utilizes strong connectivity components (SCCs) to identify these nodes.
+
+Here's a step-by-step explanation of how the program works:
+
+1. **Input Reading:**
+   - Read the number of nodes (N) and the number of functioning lines (M) from the standard input.
+   - Read M lines, each containing two integers representing a functioning line connecting node u to node v.
+
+2. **Strongly Connected Components (SCC):**
+   - Utilize Kosaraju's algorithm to find SCCs in the directed graph.
+   - During this process, record the nodes in each SCC.
+
+3. **Identify the Nodes for Restoring Connectivity:**
+   - Identify the SCCs that have only one outgoing edge and no incoming edge. These represent the SCCs that can be connected to the rest of the network.
+   - Choose a node from each of these SCCs, and output the pair of nodes.
+
+4. **Output:**
+   - Output the pair of nodes chosen for restoring connectivity.
+
+### Output:
+The program outputs a pair of nodes (u, v) representing the two nodes between which a new directed line should be added to restore network connectivity.
+
+The program appears to be correct and follows the logic described in the problem. If you have any specific questions or concerns, feel free to ask!
 */

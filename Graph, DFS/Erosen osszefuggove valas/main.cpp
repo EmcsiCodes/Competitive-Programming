@@ -3,7 +3,50 @@
 #include <stack>
 
 using namespace std;
-//Make all the graph strongly connected with one new edge
+/*
+Here's the summary of the problem "Erősen összefüggővé alakítás" (Converting to Strongly Connected):
+
+- **Problem Description**:
+  Given a directed graph G=(V, E) that is semi-connected, meaning there exists a path from any vertex p to q or from q to p. If G is not strongly connected, there exists a pair of vertices u and v such that adding the edge uv makes G strongly connected.
+
+- **Task**:
+  Create a program that calculates an edge uv, such that adding this edge makes G strongly connected.
+
+- **Input**:
+  - The first line of standard input contains the number of vertices N (1 ≤ N ≤ 10,000) and the number of edges M (1 ≤ M ≤ 200,000).
+  - The following M lines each contain two integers p and q (1 ≤ p ≠ q ≤ N) representing a directed edge from p to q.
+
+- **Output**:
+  - The program should output a single line with a pair of integers u and v, representing the edge uv that, when added, makes the graph G strongly connected. If G is already strongly connected, output 0 0.
+
+- **Example**:
+  - **Input**:
+    ```
+    10 15
+    2 3
+    3 6
+    6 2
+    3 4
+    4 2
+    4 1
+    1 5
+    5 10
+    10 1
+    1 8
+    5 7
+    7 9
+    9 7
+    3 7
+    8 10
+    ```
+  - **Output**:
+    ```
+    7 2
+    ```
+
+- **Constraints**:
+  - The constraints ensure that the computation can be performed within a reasonable time frame.
+*/
 vector<int> adj[10001];
 stack<int> s;
 pair<int,int> res;
@@ -67,30 +110,39 @@ int main()
     return 0;
 }
 /*
-Input Reading:
+The given program aims to find an edge (u, v) that, when added to a directed graph, makes the graph strongly connected. The program uses Kosaraju's Algorithm to achieve this.
 
-Read the number of nodes n and edges m.
-Initialize vectors to keep track of discovery time, low value, in-degree, out-degree, and whether a node is on the stack.
-Graph Construction and Degree Calculation:
+### Approach:
 
-Read the edges from the input and construct the directed graph.
-Calculate the in-degree and out-degree of each node.
-Strongly Connected Component (SCC) Algorithm - Kosaraju's Algorithm:
+1. **Input Reading:**
+   - Read the number of nodes \(n\) and edges \(m\).
+   - Initialize vectors to keep track of discovery time, low value, in-degree, out-degree, and whether a node is on the stack.
 
-Iterate through all nodes.
-For each unvisited node:
-Call the SCC function to find strongly connected components.
-SCC Function (Kosaraju's Algorithm):
+2. **Graph Construction and Degree Calculation:**
+   - Read the edges from the input and construct the directed graph.
+   - Calculate the in-degree and out-degree of each node.
 
-Use Kosaraju's Algorithm to find strongly connected components.
-Traverse the graph in a depth-first search manner, assigning discovery times and low values to nodes.
-Keep track of nodes in the current SCC using a stack.
-When identifying a strongly connected component:
-Calculate in-degree and out-degree sums for the component.
-Update res.first if the in-degree sum is zero.
-Update res.second if the out-degree sum is zero.
-Output:
+3. **Strongly Connected Component (SCC) Algorithm - Kosaraju's Algorithm:**
+   - Iterate through all nodes.
+   - For each unvisited node:
+     - Call the SCC function to find strongly connected components.
 
-Print the results, i.e., the nodes corresponding to the start and end points of the additional edge required to make the graph strongly connected.
-This algorithm employs Kosaraju's Algorithm to find strongly connected components in a directed graph and determine the nodes necessary to make the entire graph strongly connected by adding one new edge.
+4. **SCC Function (Kosaraju's Algorithm):**
+   - Use Kosaraju's Algorithm to find strongly connected components.
+   - Traverse the graph in a depth-first search manner, assigning discovery times and low values to nodes.
+   - Keep track of nodes in the current SCC using a stack.
+   - When identifying a strongly connected component:
+     - Calculate in-degree and out-degree sums for the component.
+     - Update res.first if the in-degree sum is zero.
+     - Update res.second if the out-degree sum is zero.
+
+5. **Output:**
+   - Print the results, i.e., the nodes corresponding to the start and end points of the additional edge required to make the graph strongly connected.
+
+### Output:
+The program outputs a pair of integers \(u\) and \(v\), representing the edge \(u \to v\) that, when added, makes the graph strongly connected. If the graph is already strongly connected, it outputs "0 0".
+
+### Example:
+For the provided input example:
+- The program should output "7 2" as adding the edge from node 7 to node 2 will make the graph strongly connected.
 */

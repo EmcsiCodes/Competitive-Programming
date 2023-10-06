@@ -3,9 +3,46 @@
 
 using namespace std;
 /*
-The problem involves finding routes in a network that can be traversed at least twice without following the same path.
-This is determined by identifying "bridges" in the network.
-A bridge is an edge whose removal increases the number of connected components in the graph.
+Here's the summary of the problem "Duplán elérhető pontok" (Nodes Reachable Even When Lines Fail):
+
+- **Problem Description**:
+  A computer network consists of nodes and bidirectional data transmission lines directly connecting specific node pairs. The network includes a designated central node. The network operators want to determine which nodes remain reachable from the central node even if any individual direct line fails.
+
+- **Task**:
+  Create a program that calculates the nodes reachable from the central node even if any unique direct line fails.
+
+- **Input**:
+  - The first line of standard input contains the number of nodes N (1 < N ≤ 100,000), the number of direct lines M (1 < M ≤ 1,000,000), and the index K of the central node.
+  - The next M lines each contain two integers u and v (1 ≤ u ≠ v ≤ N), indicating a direct line connecting node u to v and vice versa.
+
+- **Output**:
+  - The program should output the number of nodes C that remain reachable from the central node even if any direct line fails.
+  - The next line should contain C integers, representing the indices of nodes reachable in case of any line failure.
+
+- **Example**:
+  - **Input**:
+    ```
+    11 12 3 5
+    3 2
+    3 2
+    4 6
+    11 2
+    10 6
+    11 6
+    2 6
+    7 5
+    8 5
+    4 5
+    8 7
+    ```
+  - **Output**:
+    ```
+    11
+    2 4 5 6 7 8 10 11
+    ```
+
+- **Constraints**:
+  - The constraints ensure that the computation can be performed within a reasonable time frame.
 */
 vector<int> adj[100001];
 

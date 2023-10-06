@@ -2,7 +2,48 @@
 #include <vector>
 #include <stack>
 using namespace std;
+/*
+- **Problem Description**:
+  Given a directed graph, calculate the minimum number of new edges needed in the graph to ensure that there exists a set of R vertices such that there is a path from every vertex to at least one vertex in R.
 
+- **Task**:
+  Create a program that calculates the minimum number of new edges and the set of R vertices that achieves the above condition.
+
+- **Input**:
+  - The first line of standard input contains the number of nodes N (1 ≤ N ≤ 100,000) and the number of edges M (1 ≤ M ≤ 200,000).
+  - The following M lines each contain two endpoints of an edge (u, v), representing a directed edge from u to v.
+
+- **Output**:
+  - The program should output the smallest number K, which represents the minimum number of new edges required.
+  - The next line should contain the count R, representing the number of vertices in the set R.
+  - The following K lines should each contain the two endpoints of a new edge to be added.
+
+- **Example**:
+  - **Input**:
+    ```
+    9 11
+    1 2
+    2 3
+    2 1
+    3 4
+    4 5
+    5 3
+    6 7
+    7 6
+    8 3
+    8 9
+    9 8
+    ```
+  - **Output**:
+    ```
+    1
+    7
+    3 7
+    ```
+
+- **Constraints**:
+  - The constraints ensure that the computation can be performed within a reasonable time frame.
+*/
 vector<int> outNull;
 vector<int> adj[100001];
 stack<int> s;
@@ -68,16 +109,27 @@ int main()
     return 0;
 }
 /*
-9 11
-1 2
-2 3
-2 1
-3 4
-4 5
-5 3
-6 7
-7 6
-8 3
-8 9
-9 8
+The given C++ program solves the problem of calculating the minimum number of new edges needed in a directed graph to ensure that there exists a set of R vertices such that there is a path from every vertex to at least one vertex in R.
+
+Here's a step-by-step breakdown of the program:
+
+### Program Approach:
+
+1. **Input Reading:**
+   - Read the number of nodes (N) and the number of edges (M) from the standard input.
+   - Read M lines, each containing two endpoints of an edge (u, v), representing a directed edge from u to v.
+
+2. **Strongly Connected Components (SCC):**
+   - Use the Kosaraju's algorithm to find the strongly connected components in the graph.
+
+3. **Finding the Best Spot for New Edges:**
+   - For each strongly connected component, if it doesn't have any outgoing edges (out-degree = 0), add a new edge from this component to the component with the highest out-degree among all such components.
+   - Output the smallest number K, which represents the minimum number of new edges required.
+   - Output the count R, representing the number of vertices in the set R.
+   - Output the endpoints of the new edges to be added.
+
+### Output:
+The program outputs the smallest number K, which represents the minimum number of new edges required. It then outputs the count R, representing the number of vertices in the set R. Finally, it outputs the endpoints of the new edges to be added.
+
+The program aims to determine the minimum number of new edges needed in the graph to ensure that there exists a set of R vertices such that there is a path from every vertex to at least one vertex in R.
 */
