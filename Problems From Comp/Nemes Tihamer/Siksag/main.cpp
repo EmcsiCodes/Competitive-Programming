@@ -43,14 +43,17 @@ int main()
 */
 /*
 int time;
-cin>>time;
 int mySanity = 100;
+
+cin >> time;
 int daysBeforeProgrammingCompetiton = time;
+
 while(daysBeforeProgrammingCompetiton > 0 && mySanity > 0) {
     solveProblems();
     mySanity--;
     daysBeforeProgrammingCompetiton--;
 }
+
 if(mySanity == 0) die;
 
 */

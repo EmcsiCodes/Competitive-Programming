@@ -2,6 +2,10 @@
 #include <vector>
 #include <queue>
 using namespace std;
+
+//the program is wrong but its too painfull to delete it after spending more than a day for it
+
+
 #define LL long long
 vector< pair<int,LL> > adj[10001];
 int n,k;

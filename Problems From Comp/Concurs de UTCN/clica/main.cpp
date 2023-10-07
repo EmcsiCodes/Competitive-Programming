@@ -6,6 +6,49 @@
 #include <queue>
 using namespace std;
 
+/*
+Problem Summary:
+You are given a directed graph G with N vertices and M edges.
+Your task is to find the size of the largest clique in the transitive closure of this graph, denoted as G*.
+
+- The input consists of multiple test cases.
+- For each test case, you are given the number of vertices (N) and edges (M) in the graph.
+- The edges of the graph are provided as pairs of vertices.
+- You need to find the size of the largest clique in the transitive closure of the graph G*.
+
+A clique in a graph is a set of vertices where there is an edge between every pair
+of vertices in the set. The transitive closure of a graph contains all the edges
+that can be reached by following directed paths, including indirect connections.
+
+Your task is to determine the largest group of vertices in G* such that there is a
+directed path between every pair of vertices in this group.
+
+Constraints:
+- 3 ≤ N ≤ 10^4
+- 3 ≤ M ≤ 10^6
+
+Output:
+For each test case, print the test number (starting from 1) followed by a colon and
+the size of the largest clique in the transitive closure of the graph.
+
+Example:
+Input:
+```
+4 4
+1 2 2 3 3 4 4 1
+0
+```
+
+Output:
+```
+1:4
+```
+
+Explanation:
+In the example, the graph forms a cycle with 4 vertices, so the largest clique
+in the transitive closure contains all the vertices, resulting in a size of 4.
+*/
+
 void SCC(int node,vector<int> &disc,vector<int>&low, vector<bool>&onStack,
 vector<int>adj[], stack<int>&s, int comp[], vector<int> &nodes,vector<int>&compNum){
     static int time = 1;
@@ -103,3 +146,41 @@ int main()
     }
     return 0;
 }
+/*
+This C++ program solves the given problem of finding the size of the largest
+clique in the transitive closure of a directed graph.
+
+### Approach:
+
+1. **Strongly Connected Components (SCC):**
+   The first step is to find the strongly connected components (SCCs) of the given
+   directed graph using Kosaraju's Algorithm. SCCs are subgraphs in which every pair
+   of vertices is reachable from each other.
+
+2. **Constructing Subgraph:**
+   For each SCC, we construct a subgraph where the nodes are the SCCs, and an edge from
+   SCC A to SCC B exists if there is an edge from any vertex in SCC A to any vertex in SCC B.
+
+3. **Directed Acyclic Graph (DAG):**
+   We convert the subgraph into a directed acyclic graph (DAG) by merging each SCC
+   into a single node and removing duplicate edges.
+
+4. **Topological Sorting and Longest Path:**
+   Perform a topological sorting on the DAG and find the longest path for each node,
+   representing the largest clique in the transitive closure.
+
+5. **Output:**
+   The size of the largest clique is the maximum value in the longest paths for each SCC.
+
+### Explanation of the Code:
+
+1. The `SCC` function implements Kosaraju's Algorithm to find SCCs in the graph.
+
+2. The `makeSubGraph` function constructs the subgraph based on SCCs and calculates the in-degree of each SCC.
+
+3. The main function reads the input, constructs the subgraph, calculates the longest paths,
+and prints the size of the largest clique for each test case.
+
+This program efficiently computes the largest clique size in the transitive closure of the
+given graph by employing the concepts of SCCs and topological sorting.
+*/
