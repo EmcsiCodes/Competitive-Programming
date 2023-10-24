@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1676889159 source:d:\sdfv\main.cpp
-	<iostream>
-	<unordered_map>
-	<vector>
-	<string>
-
