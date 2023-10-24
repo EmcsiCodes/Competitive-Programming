@@ -5,7 +5,9 @@ using namespace std;
 /*
 Problem Summary:
 
-The problem revolves around scheduling and finding time intervals where Adam and Eve, two individuals, are available. The goal is to identify time periods when Adam is available without conflicting with Eve's availability.
+The problem revolves around scheduling and finding time intervals where Adam and Eve,
+two individuals, are available.
+The goal is to identify time periods when Adam is available without conflicting with Eve's availability.
 
 Detailed Explanation:
 
