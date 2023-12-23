@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1670444450 source:d:\emcsis things\work\school\nemes tihamer\ranglista\main.cpp
+	<iostream>
+	<set>
+	<map>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1670415785 source:d:\emcsis things\work\school\nemes tihamer\valahol olcsobb aru\main.cpp
+	<iostream>
+	<unordered_map>
+
