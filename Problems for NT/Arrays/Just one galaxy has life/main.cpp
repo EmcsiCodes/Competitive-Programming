@@ -3,7 +3,8 @@
 #include <algorithm>
 using namespace std;
 /*
-In a distant galaxy, there are two neighboring planets where life has emerged multiple times. The goal is to determine the periods when there was life on exactly one of these planets.
+In a distant galaxy, there are two neighboring planets where life has emerged multiple times.
+The goal is to determine the periods when there was life on exactly one of these planets.
 
 Input: The input includes the number of periods of life on each of the two planets and the start and end times for each of these periods.
 

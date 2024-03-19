@@ -43,3 +43,30 @@ int main()
     }
     return 0;
 }
+
+/*
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+
+
+/*
+ * Complete the 'minOperations' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts UNWEIGHTED_INTEGER_GRAPH comp as parameter.
+ */
+
+/*
+ * For the unweighted graph, <name>:
+ *
+ * 1. The number of nodes is <name>_nodes.
+ * 2. The number of edges is <name>_edges.
+ * 3. An edge exists between <name>_from[i] and <name>_to[i].
+ *
+ */

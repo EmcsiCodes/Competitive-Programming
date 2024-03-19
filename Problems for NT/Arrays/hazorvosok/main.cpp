@@ -4,14 +4,17 @@
 using namespace std;
 
 /*
-Along a road, there are V cities. M general practitioner positions have been advertised in these cities, and N doctors have applied for these positions. No one wants to work more than K kilometers away from their place of residence.
+Along a road, there are V cities. M general practitioner positions have been advertised in these cities,
+and N doctors have applied for these positions.
+No one wants to work more than K kilometers away from their place of residence.
 
 Write a program that determines the maximum number of fillable positions!
 
 Input:
 
 The first line of the standard input contains the number of cities (1≤V≤100 000), the number of job positions (1≤M≤100 000), and the number of applicants (1≤N≤100 000).
-The second line contains the distance of each city from the first city (1≤LTi≤1 000 000), in ascending order. The distance of the first city is always 0.
+The second line contains the distance of each city from the first city (1≤LTi≤1 000 000), in ascending order.
+The distance of the first city is always 0.
 The third line contains the city numbers for the advertised positions (1≤Álli≤V), in ascending order.
 The fourth line contains the city numbers for the applicants' places of residence (1≤Laki≤V), in ascending order.
 The fifth line contains the distance K (0≤K≤1000).

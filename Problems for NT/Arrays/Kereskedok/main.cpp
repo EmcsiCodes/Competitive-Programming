@@ -3,7 +3,8 @@
 #include <set>
 using namespace std;
 /*
-We are given the products sold by two fruit merchants. Create a program that determines the fruits that are available at only one of the two merchants.
+We are given the products sold by two fruit merchants.
+Create a program that determines the fruits that are available at only one of the two merchants.
 
 Input:
 

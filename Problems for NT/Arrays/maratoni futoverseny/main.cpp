@@ -1,9 +1,10 @@
 #include <iostream>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 /*
-This problem involves identifying the countries whose representatives have completed the entire marathon in the order they crossed the finish line.
+This problem involves identifying the countries whose representatives have
+completed the entire marathon in the order they crossed the finish line.
 
 Here's a detailed explanation of the problem:
 
@@ -32,7 +33,7 @@ int main()
     int n;
     string s;
     cin>>n;
-    set<string> p;
+    unordered_set<string> p;
     for(int i=1; i<=n; i++){
         string s;
         cin>>s;

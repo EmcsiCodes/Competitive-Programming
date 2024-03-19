@@ -4,7 +4,9 @@
 using namespace std;
 
 /*
-The problem, titled "Kézbesítők," involves scheduling meetings between a postmaster and a group of mail carriers. Each mail carrier has specific work intervals, and the objective is to find the shortest time interval during which the postmaster can meet with each mail carrier individually.
+The problem, titled "Kézbesítők," involves scheduling meetings between a postmaster and a group of mail carriers.
+Each mail carrier has specific work intervals, and the objective is to find the shortest time interval
+during which the postmaster can meet with each mail carrier individually.
 
 Here's a more detailed explanation of the problem:
 
@@ -17,7 +19,8 @@ The subsequent Ni lines in the block describe the start and end days of each wor
 Objective:
 
 The postmaster wants to award a reward to each mail carrier, and these rewards require a personal meeting.
-The goal is to determine the shortest continuous time interval during which the postmaster can meet each mail carrier individually.
+The goal is to determine the shortest continuous time interval during which the postmaster can meet each mail
+carrier individually.
 Output:
 
 The program should output the start and end days of the shortest continuous interval in which the postmaster can meet all mail carriers.

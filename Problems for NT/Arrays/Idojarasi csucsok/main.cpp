@@ -4,7 +4,9 @@
 
 using namespace std;
 /*
-For N days, we know the noon temperature. We call a day locally warm (except the first and last days) if the temperature on that day was higher than its two neighbors, and locally cold if it was lower than its two neighbors.
+For N days, we know the noon temperature. We call a day locally warm (except the first and last days)
+if the temperature on that day was higher than its two neighbors,
+and locally cold if it was lower than its two neighbors.
 
 Write a program that determines how many continuous periods within the N days have exactly K locally warm and L locally cold days.
 
@@ -95,7 +97,11 @@ Temperature Analysis:
 The program then iterates through the temperature values, identifying points where the temperature is locally warm or locally cold based on its relationship with its neighbors. These points are stored in the vector r.
 
 Counting Periods:
-The program then counts the number of periods that have exactly K locally warm and L locally cold days. It does this by iterating through the temperature change points, maintaining counters for locally warm and cold days in a window of size K+L. When the counters match the required counts, the program calculates the length of the continuous period and adds it to the total count.
+The program then counts the number of periods that have exactly K locally warm and L locally cold days.
+It does this by iterating through the temperature change points,
+maintaining counters for locally warm and cold days in a window of size K+L.
+When the counters match the required counts,
+the program calculates the length of the continuous period and adds it to the total count.
 
 Output:
 The program prints the count of continuous periods that meet the criteria.

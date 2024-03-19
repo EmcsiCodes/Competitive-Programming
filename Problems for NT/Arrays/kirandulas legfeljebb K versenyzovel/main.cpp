@@ -3,7 +3,8 @@
 #include <vector>
 using namespace std;
 /*
-This problem involves organizing a field trip for a maximum of K participants based on the results of academic competitions held in various subjects.
+This problem involves organizing a field trip for a maximum of K participants based on the results of
+academic competitions held in various subjects.
 
 Here's a detailed explanation of the problem:
 

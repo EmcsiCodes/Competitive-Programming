@@ -3,7 +3,8 @@
 
 using namespace std;
 /*
-This problem involves determining the cheapest and most expensive prices of apples that are sold at the lower and upper markets.
+This problem involves determining the cheapest and most expensive prices of apples
+that are sold at the lower and upper markets.
 
 Here's a detailed explanation of the problem:
 
