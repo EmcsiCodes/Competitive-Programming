@@ -3,7 +3,8 @@
 #include <set>
 using namespace std;
 /*
-This problem involves calculating the maximum quantity of each product that can be purchased under two conditions: A) from one store only, and B) from both stores.
+This problem involves calculating the maximum quantity of each product that can be purchased under
+two conditions: A) from one store only, and B) from both stores.
 
 Here's a detailed explanation of the problem:
 

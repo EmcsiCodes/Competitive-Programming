@@ -4,7 +4,8 @@
 
 using namespace std;
 /*
-This problem involves finding the time intervals when you can catch all the broadcasts from different television channels.
+This problem involves finding the time intervals when you can catch all the broadcasts
+from different television channels.
 
 Here's a detailed explanation of the problem:
 
@@ -88,16 +89,21 @@ int main()
 }
 /*
 Problem Description
-The problem involves finding time intervals during which you can catch all broadcasts from different television channels. Each channel has a schedule of broadcasts, represented by start and end times. The goal is to determine the overlapping time intervals when you can watch broadcasts from all channels.
+The problem involves finding time intervals during which you can catch all broadcasts from
+different television channels. Each channel has a schedule of broadcasts, represented by
+start and end times. The goal is to determine the overlapping time intervals when you
+can watch broadcasts from all channels.
 
 Approach to Solving the Problem
 Data Representation:
 
-Each channel's schedule is represented using a vector of pairs, where each pair denotes the start and end time of a broadcast for that channel.
+Each channel's schedule is represented using a vector of pairs, where each pair denotes the start
+and end time of a broadcast for that channel.
 All channel schedules are stored in a vector of vectors.
 Finding Overlapping Time Intervals:
 
-We start by considering the broadcasts of the first channel. These broadcasts will serve as the basis for our overlapping intervals.
+We start by considering the broadcasts of the first channel. These broadcasts will serve as the basis
+for our overlapping intervals.
 For each subsequent channel:
 We compare the broadcasts of the current channel with the overlapping intervals obtained so far.
 If there's an overlap, we update the overlapping intervals.

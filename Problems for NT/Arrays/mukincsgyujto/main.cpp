@@ -3,7 +3,8 @@
 #include <algorithm>
 using namespace std;
 /*
-This problem involves a art collector who wants to purchase two paintings from a list within a given budget.
+This problem involves a art collector who wants to purchase two paintings
+from a list within a given budget.
 
 Here's a detailed explanation of the problem:
 
