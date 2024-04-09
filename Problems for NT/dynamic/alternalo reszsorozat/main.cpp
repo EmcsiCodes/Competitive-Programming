@@ -3,11 +3,14 @@
 
 using namespace std;
 /*
-The task involves finding the longest alternating subsequence in a given sequence. An alternating subsequence is defined such that for any three consecutive elements a, b, c, either a < b > c or a > b < c.
+The task involves finding the longest alternating subsequence in a given sequence.
+An alternating subsequence is defined such that for any three consecutive elements
+a, b, c, either a < b > c or a > b < c.
 
 Input: The input consists of the number of elements in the sequence, N (1≤N≤10,000), and the actual sequence of positive integers.
 
-Output: Output the length of the longest alternating subsequence and provide the indices of the elements that form this subsequence.
+Output: Output the length of the longest alternating subsequence and provide
+the indices of the elements that form this subsequence.
 
 Example:
 
