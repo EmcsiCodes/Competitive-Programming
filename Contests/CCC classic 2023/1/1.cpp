@@ -11,28 +11,19 @@ using namespace std;
 
 int main()
 {
-    ifstream f("level1_5.txt");
+    ifstream f("level1_5.in");
     ofstream g("level1_5.out");
     int n;
     f>>n;
-    char a[n][n];
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            f>>a[i][j];
+    string x;
+    for(int i=0; i<n; i++){
+        string s;
+        f>>s;
+        unordered_map<char,int> m;
+       for(int j=0; j<s.length(); j++){
+            m[s[j]]++;
         }
-    }
-    int x;
-    f>>x;
-    for(int i=0;i<x;i++)
-    {
-        int aa,bb;
-        f>>aa;
-        char c;
-        f>>c;
-        f>>bb;
-        g<<a[bb][aa]<<endl;
+        g<<m['W']<<" "<<m['D']<<" "<<m['S']<<" "<<m['A']<<endl;
     }
     return 0;
 }

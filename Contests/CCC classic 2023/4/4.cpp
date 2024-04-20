@@ -4,101 +4,110 @@
 #include <stack>
 #include <unordered_map>
 #include <map>
-#include <queue>
 #include <fstream>
-#include <string.h>
-#include <stdio.h>
-#include <string>
 
 using namespace std;
 #define inf 100000000
-char a[300][300];
-
-ofstream db("debug.out");
-
-int invc = 0;
-
-int dx[8] = {1, 0, -1, 0, 1, -1, 1, -1};
-int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
-
-vector<pair<int, int>> paths;
-
-pair<int, int> parent[300][300];
-
-void findPath(int x1, int y1, int n, char a[][300])
-{
-    bool visited[250][250];
-    memset(visited, false, sizeof(visited));
-    queue<pair<int, int>> q;
-    q.push({x1, y1});
-    visited[x1][y1] = true;
-    parent[x1][y1] = {-1, -1};
-    while (!q.empty())
-    {
-        // cout<<"whilean"<<endl;
-        pair<int, int> node = q.front();
-        visited[node.first][node.second] = true;
-        //  cout<<node.first<<" "<<node.second<<endl;
-        q.pop();
-        for (int i = 0; i < 8; i++)
-        {
-            int nx, ny;
-            nx = node.first + dx[i];
-            ny = node.second + dy[i];
-            if (!visited[nx][ny] && a[nx][ny] == 'W' && nx >= 0 && nx < n && ny >= 0 && ny < n)
-            {
-                q.push({nx, ny});
-               // cout << node.first  << "," << node.second << " -> " << ny << "," << nx << endl;
-                parent[nx][ny] = {node.first, node.second};
-                visited[nx][ny] = true;
-            }
-        }
-    }
-    cout << "szia";
-}
 
 int main()
 {
-    ifstream f("level4_5.in");
-    ofstream g("level4_5.out");
+    ifstream f("level3_5.in");
+    ofstream g("level3_5.out");
     int n;
-    f >> n;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
+    f>>n;
+
+    for(int i=0; i<n; i++){
+        string s;
+        int a,b;
+        f>>b>>a;
+        int valid[100][100];
+        //g<<a<<" "<<b<<endl;
+        for(int ii=0;ii<a;ii++)
         {
-            f >> a[i][j];
+            for(int jj=0;jj<b;jj++)
+            {
+                char c;
+                f>>c;
+                if(c == '.') valid[ii][jj] = 0;
+                else valid[ii][jj] = 1;
+            }
         }
-    }
-    int x1, y1, x2, y2;
-    int count;
-    f >> count;
-    string ss;
-    getline(f, ss);
-    while (count--)
-    {
-        char c;
-        f >> y1 >> c >> x1 >> y2 >> c >> x2;
-        cout << y1 << " " << x1 << " " << y2 << " " << x2 << endl;
-        memset(parent, 0, sizeof(parent));
-        parent[x1][y1] = {-1,-1};
-        findPath(x1, y1, n, a);
-        vector<pair<int, int>> ans;
-        int px = x2, py = y2;
-        while (px != -1)
-        {
-            ans.push_back({px, py});
-            cout << px << " " << py << endl;
-            int s = px;
-            px = parent[px][py].first;
-            py = parent[s][py].second;
+        bool foundvalid = false;
+        for(int k=0; k<a*b - 2; k++){
+            s += "W";
         }
-       // cout << "eredmeny : ";
-        for (int i = ans.size() - 1; i >= 0; i--)
-        {
-            g << ans[i].second << "," << ans[i].first << " ";
+        while(!foundvalid){
+            int x,y;
+            x=y=0;
+            
+            int maxup, maxdown, maxleft, maxright;
+            maxup = 0;
+            maxright = 0;
+            maxleft = 0;
+            maxdown = 0;
+            for(int j=0;j<s.length();j++)
+            {
+                if(s[j] == 'W') x++;
+                if(s[j] == 'S') x--;
+                if(s[j] == 'A') y--;
+                if(s[j] == 'D')  y++;
+                maxup = max(maxup, x);
+                maxdown = min(maxdown, x);
+                maxright = max(maxright, y);
+                maxleft = min(maxleft, y);
+            }
+            int iy = -maxleft;
+            int ix = maxup;
+            bool val = true;
+            //g<<ix<<":"<<iy<<endl;
+            if(ix<0 || ix>=a) {
+                val = false;
+                ix = 0;
+            }
+            if(iy<0 || iy>=b){
+                val = false;
+                iy = 0;
+            }
+            if(valid[ix][iy] == 1) {
+                val = false;
+            }
+            valid[ix][iy] = 1;
+            
+            for(int j=0; val == true && j<s.length(); j++){
+                if(s[j] == 'W'){
+                    ix--;
+                }
+                if(s[j] == 'S'){
+                    ix++;
+                }
+                if(s[j] == 'A'){
+                    iy--;
+                }
+                if(s[j] == 'D'){
+                    iy++;
+                }   
+                if(valid[ix][iy] == 1) {
+                    //g<<valid[ix][iy]<<": "<<ix<<" "<<iy<<endl;
+                    val = false;
+                    break;
+                }
+                valid[ix][iy] = 1;
+            }
+            for(int ii=0;val == true && ii<a;ii++)
+            {
+                for(int jj=0;jj<b;jj++)
+                {
+                    if(valid[ii][jj] == 0) {
+                        //g<<"err3 "<<ii<<" "<<jj<<endl;
+                        val = false;
+                    }
+                }
+            }
+            if(val){
+                g<<"VALID"<<endl;
+            } else g<<"INVALID"<<endl;  
         }
-        g << endl;
-    }
+
+    }   
     return 0;
 }

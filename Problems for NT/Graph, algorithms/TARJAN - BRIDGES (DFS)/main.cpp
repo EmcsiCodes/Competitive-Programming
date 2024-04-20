@@ -7,12 +7,13 @@ vector<int> adj[1001];
 int bridge[1001][1001] = {false};
 
 void findBridges(int node,vector<int> &disc, vector<int> &low, vector<int> &parent){
-    static int time = 0;
+    static int time = 1;
     disc[node] = time;
     low[node] = time;
+    //we dont need stack
     time++;
     for(auto i:adj[node]){
-        if(disc[i] == -1){ 
+        if(disc[i] == 0){ 
             //if not visited
             parent[i] = node;
             findBridges(i,disc,low,parent);
@@ -42,9 +43,9 @@ int main()
         adj[x].push_back(y);
         adj[y].push_back(x);
     }
-    vector<int> disc(n+1,-1), low(n+1,-1), parent(n+1,-1);
+    vector<int> disc(n+1,0), low(n+1,0), parent(n+1,0);
     for(int i=1; i<=n; i++){
-        if(disc[i] == -1) findBridges(startNode,disc,low,parent);
+        if(disc[i] == 0) findBridges(startNode,disc,low,parent);
     }
     cout<<"bridges:";
     for(int i=1; i<=n; i++){
